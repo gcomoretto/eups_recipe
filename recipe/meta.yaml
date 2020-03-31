@@ -5,27 +5,20 @@ package:
   version: {{ version }}
 
 build:
-  number: 2
+  number: 3
 
 requirements:
   host:
     - python
-    - pip
     - curl
     - git
     - make
-    - cmake
 
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
 
   run:
     - python
-    - pip
-    - curl
-    - git
-    - make
-    - cmake
 
 about:
   home: https://github.com/gcomoretto/eups_recipe
