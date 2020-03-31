@@ -37,6 +37,7 @@ cd ${EUPS_SRC}
 pushd "eups-${LSST_EUPS_VERSION}"
 
 mkdir -p "${EUPS_PATH}"/{site,ups_db}
+touch "${EUPS_PATH}/ups_db/.conda_keep"
 mkdir -p "${EUPS_DIR}"
 ./configure \
     --prefix="${EUPS_DIR}" \
