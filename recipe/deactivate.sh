@@ -37,5 +37,5 @@ export PATH=$WORK
 
 # remove EUPS vars
 for var in EUPS_PATH EUPS_SHELL SETUP_EUPS EUPS_DIR; do
-    unset var
+    unset $var
 done
