@@ -45,5 +45,16 @@ mkdir -p "${EUPS_DIR}"
     --with-python="${EUPS_PYTHON}"
 make install
 
+# eups installs readonly, need to give permission to the user in order to complete the packaging
+chmod -R a+r "${EUPS_DIR}"
+chmod -R u+w "${EUPS_DIR}"
+
 rm -rf "${EUPS_SRC}" # I don't want the src folder in the conda package
 
+# Copy the [de]activate scripts to $PREFIX/etc/conda/[de]activate.d.
+# This will allow them to be run on environment activation.
+for CHANGE in "activate" "deactivate"
+do
+    mkdir -p "${PREFIX}/etc/conda/${CHANGE}.d"
+    cp "${RECIPE_DIR}/${CHANGE}.sh" "${PREFIX}/etc/conda/${CHANGE}.d/${PKG_NAME}_${CHANGE}.sh"
+done
